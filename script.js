@@ -1,3 +1,17 @@
+// Using GSAP to animate title page onload
+gsap.from("#titleContainer", { y: -400, ease: "bounce.out", duration: 2})
+
+const startBut = document.getElementById("startBut")
+
+startBut.onclick = () => {
+    gsap.to('.stagOutro', {y: -1000, stagger:0.1})
+}
+
+
+
+
+
+
 // option use to setup fetch
 const options = {method: 'GET', headers: {'User-Agent': 'insomnia/10.0.0'}};
 
