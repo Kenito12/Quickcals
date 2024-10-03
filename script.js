@@ -14,7 +14,9 @@ metersParent.style.display = "none"
 
 
 var ingrCals
+var ingrProt
 var calsGoal = 2500;
+var proteinGoal = 150;
 
 
 // Start button behaviors   activate some animation and loading result page
@@ -69,14 +71,17 @@ searchBut.onclick = (event) => {
         let protein = apiResult.totalNutrients.PROCNT.quantity.toFixed(1) + apiResult.totalNutrients.PROCNT.unit
         let proteinDaily = Math.round(apiResult.totalDaily.PROCNT.quantity) +" "+ apiResult.totalDaily.PROCNT.unit
 
+        // user charAt() to select the first letter of the word and capitalized it.
+        let foodTitle = apiResult.ingredients[0].parsed[0].foodMatch.charAt(0).toUpperCase() + apiResult.ingredients[0].parsed[0].foodMatch.replace(apiResult.ingredients[0].parsed[0].foodMatch.charAt(0), "")
+        let amountPer = apiResult.ingredients[0].parsed[0].quantity +" "+ apiResult.ingredients[0].parsed[0].measure 
 
         metersParent.style.display = "block"
         nutritionalFacts.innerHTML = ""
         
         let template =/*html*/ `
-        <h1 class="roboto-bold">Nutritional Facts</h1>
+        <h1 class="roboto-bold">${foodTitle}</h1>
         <hr class="boldLine">
-        <h3 class="roboto-bold">Amount Per Serving</h3>
+        <h3 class="roboto-bold">Amount Per ${amountPer}</h3>
         <h2 class="roboto-bold">Calories<span class="textFloatRight">${apiResult.calories}</span></h2>
         <hr class="semiBLine">
         <p class="textFloatRight daily roboto-regular">% Daily Value*</p>
@@ -106,13 +111,16 @@ searchBut.onclick = (event) => {
         nutritionalFacts.innerHTML += template
 
         ingrCals = apiResult.calories
+        ingrProt = apiResult.totalNutrients.PROCNT.quantity.toFixed(1)
 
         let calGoalPer = (ingrCals/calsGoal)*100;
+        let protGoalPer = (ingrProt/proteinGoal)*100
 
         console.log(calGoalPer)
+    
 
         bar.animate(calGoalPer/100); 
-        bar2.animate(1.0); 
+        bar2.animate(protGoalPer/100); 
         
         
     })
@@ -173,7 +181,7 @@ var bar = new ProgressBar.Circle(calMeter, {
         circle.path.setAttribute('stroke', state.color);
         circle.path.setAttribute('stroke-width', state.width);
 
-      var value = Math.round(circle.value() * 102.9);
+      var value = Math.round(circle.value() * proteinGoal);
         if (value === 0) {
         circle.setText('0<br><span class="meterSub">Grams</span>');
         } else {
