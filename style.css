@@ -1,6 +1,7 @@
 html, body{
     margin: 0;
     padding: 0;
+    /* background-color: #0075FF; */
 }
 
 /* Google Font */
@@ -48,7 +49,7 @@ html, body{
     width: 100vw;
     height: 100vh;
     background-color: #0075FF;
-    display:block;
+    display:none;
     margin: 0;
     padding: 0;
     position: relative;
@@ -75,11 +76,11 @@ html, body{
 #startBut{
     width: 269px;
     height: 58px;
+    border-radius: 50px;
+    margin: 0 auto;
     background-color: #57A3FD;
     font-size: 34px;
-    border-radius: 50px;
     color: #F2F8FF;
-    margin: 0 auto;
     filter: drop-shadow(0px 3.7px 0px rgba(0,0,0,25%));
     user-select: none;
 }
@@ -92,10 +93,130 @@ html, body{
 /* StartScreen End */
 
 
+/* ResultScreen */
 #ResultScreen{
     width: 100vw;
     height: 100vh;
-    background-color: white;
-    display: none;
+    background-color:  #0075FF;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
 }
+
+#HamburgerMenu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#searchBar{
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#searchBar > input{
+    width: 400px;
+    height: 48px;
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    background-color: #F2F8FF;
+    color: #0058BF;
+}
+#searchBar > button{
+    margin-left: 16px;
+    width: 127px;
+    height: 48px;
+    border-radius: 50px;
+    border: none;
+    background-color: #57A3FD;
+    font-size: 24px;
+    color: #F2F8FF;
+    filter: drop-shadow(0px 3.7px 0px rgba(0,0,0,25%));
+}
+#searchBar > button:hover{
+    background-color: #0058BF;
+    color: #F2F8FF;
+    box-shadow: inset 0px 3.7px 0px rgba(0,0,0,25%);
+}
+
+#taskbar > h2 {
+    margin-left: 50px;
+    margin-top: 50px;
+    font-size: 24px;
+    color: #F2F8FF;
+}
+/* ResultScreen End */
+
+
+/* NutritionalFacts */
+#nutritionalFacts{
+    width: 398px;
+    height: 552px;
+    background-color: #F2F8FF;
+    border-radius: 34px;
+    border: none;
+    margin: 0 auto;
+    margin-top: 75px;
+    color: #003069;
+    padding-top: 31px;
+    padding-bottom: 31px;
+}
+
+#nutritionalFacts> h1,h2,h3,p{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#nutritionalFacts>h1{
+    font-size: 27px;
+    margin: 0;
+    text-align: center;
+}
+#nutritionalFacts>h2{
+    font-size: 27px;
+    margin: 0;
+}
+#nutritionalFacts>h3{
+    font-size: 16px;
+    margin: 0;
+}
+#nutritionalFacts>p{
+    font-size: 14px;
+    margin: 0;
+}
+#nutritionalFacts>hr{
+    width: 344px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+
+.textFloatRight{
+    float: right;
+    text-align: right;
+}
+.textCenter{
+    text-align: center;
+    margin-top: 30px !important;
+    padding-bottom: 0 !important;
+}
+.boldLine{
+    border: 3px solid #D0D0D0;
+}
+.semiBLine{
+    border: 2px solid #D0D0D0;
+}
+.daily{
+    font-size: 12px !important;
+    padding-bottom: 7px;
+}
+
+/* NutritionalFacts End*/
 

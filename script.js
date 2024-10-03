@@ -1,10 +1,20 @@
 // Using GSAP to animate title page onload
-gsap.from("#titleContainer", { y: -400, ease: "bounce.out", duration: 2})
+gsap.from("#titleContainer", { y: -400, ease: "bounce.out", duration: 1})
 
+// assign DOM elements into variables
 const startBut = document.getElementById("startBut")
+const startScreen = document.getElementById("startScreen")
+const resultScreen = document.getElementById("ResultScreen")
 
+
+// Start button behaviors   activate some animation and loading result page
 startBut.onclick = () => {
     gsap.to('.stagOutro', {y: -1000, stagger:0.1})
+    gsap.to('#startScreen', {opacity: 0})
+    setTimeout(() => {
+        startScreen.style.display = "none"
+        resultScreen.style.display = "block"
+    }, 300)
 }
 
 
