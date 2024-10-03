@@ -49,7 +49,7 @@ html, body{
     width: 100vw;
     height: 100vh;
     background-color: #0075FF;
-    display:none;
+    display:block;
     margin: 0;
     padding: 0;
     position: relative;
@@ -100,7 +100,7 @@ html, body{
     background-color:  #0075FF;
     margin: 0;
     padding: 0;
-    display: block;
+    display: none;
     position: absolute;
 }
 
@@ -152,13 +152,20 @@ html, body{
     font-size: 24px;
     color: #F2F8FF;
 }
+
+#wave{
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+}
 /* ResultScreen End */
 
 
 /* NutritionalFacts */
 #nutritionalFacts{
     width: 398px;
-    height: 552px;
+    height: 551px;
     background-color: #F2F8FF;
     border-radius: 34px;
     border: none;
@@ -219,4 +226,46 @@ html, body{
 }
 
 /* NutritionalFacts End*/
+
+/* MetersBars */
+
+#metersParent{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 33px;
+    z-index: 1;
+}
+
+#calMeter, #proteinMeter{
+    width: 170px;
+    height: 170px;
+    position: relative;
+    float: left;
+    background-color: #F2F8FF;
+    border-radius: 50%;
+}
+
+#proteinMeter{
+    margin-left: 55px;
+}
+
+.progressbar-text{
+    text-align: center;
+    font-family: "Baloo Da 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 37px;
+}
+
+
+.meterSub{
+    font-family: "Baloo Da 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400 !important;
+    font-style: normal;
+    font-size: 23px !important;
+}
+/* MetersBars End*/
 
