@@ -49,7 +49,7 @@ html, body{
     width: 100vw;
     height: 100vh;
     background-color: #0075FF;
-    display:block;
+    display:none;
     margin: 0;
     padding: 0;
     position: relative;
@@ -100,7 +100,7 @@ html, body{
     background-color:  #0075FF;
     margin: 0;
     padding: 0;
-    display: none;
+    display: block;
     position: absolute;
 }
 
