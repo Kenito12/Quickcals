@@ -1,5 +1,5 @@
 // Using GSAP to animate title page onload
-gsap.from("#titleContainer", { y: -400, ease: "bounce.out", duration: 1})
+gsap.from("#titleContainer", { y: -400, ease: "bounce.out", duration: 2, opacity: 0})
 
 // assign DOM elements into variables
 const startBut = document.getElementById("startBut")
@@ -9,10 +9,11 @@ const resultScreen = document.getElementById("ResultScreen")
 const searchInput = document.getElementById("SearchInput")
 const nutritionalFacts = document.getElementById("nutritionalFacts")
 const metersParent = document.getElementById("metersParent")
+const hamBut = document.getElementById("HamburgerMenu")
 
 metersParent.style.display = "none"
 
-
+// These variablees use to calculate a personalized amount of calories and protein
 var ingrCals
 var ingrProt
 var calsGoal = 2500;
@@ -21,11 +22,13 @@ var proteinGoal = 150;
 
 // Start button behaviors   activate some animation and loading result page
 startBut.onclick = () => {
-    gsap.to('.stagOutro', {y: -1000, stagger:0.1})
-    gsap.to('#startScreen', {opacity: 0})
+    gsap.to('.stagOutro', {y: -1000, stagger:0.1, duration: 1})
+    gsap.to('#startScreen', {opacity: 0, duration: 1})
     setTimeout(() => {
         startScreen.style.display = "none"
         resultScreen.style.display = "block"
+        gsap.from('#resultTitle, #searchBar, #HamburgerMenu', {opacity: 0, duration: 1, y:-200})
+        gsap.from('#wave', {opacity: 0, duration: 1, y:200})
     }, 300)
 }
 
@@ -37,7 +40,9 @@ searchBut.onclick = (event) => {
     const output = searchInput.value.replace(/ /g, "%20");
     console.log(output)
 
-    metersParent.style.display = "none"
+    nutritionalFacts.style.display = 'block'
+    gsap.from(nutritionalFacts, {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
+    gsap.from("#calMeter, #proteinMeter", {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
 
 
     

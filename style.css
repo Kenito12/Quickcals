@@ -1,7 +1,8 @@
 html, body{
     margin: 0;
     padding: 0;
-    /* background-color: #0075FF; */
+    background-color: #0075FF;
+    overflow: hidden;
 }
 
 /* Google Font */
@@ -49,7 +50,7 @@ html, body{
     width: 100vw;
     height: 100vh;
     background-color: #0075FF;
-    display:none;
+    display: block;
     margin: 0;
     padding: 0;
     position: relative;
@@ -83,6 +84,7 @@ html, body{
     color: #F2F8FF;
     filter: drop-shadow(0px 3.7px 0px rgba(0,0,0,25%));
     user-select: none;
+    transition: all 0.3s ease;
 }
 #startBut:hover{
     cursor: pointer;
@@ -100,24 +102,24 @@ html, body{
     background-color:  #0075FF;
     margin: 0;
     padding: 0;
-    display: block;
+    display: none;
     position: absolute;
 }
 
 #HamburgerMenu{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 50px;
-    margin-right: 50px;
+    position: absolute ;
+    top: 0 ;
+    right: 0 ;
+    margin-top: 50px ;
+    margin-right: 50px ;
 }
 
 #searchBar{
-    position: absolute;
-    top: 0;
-    margin-top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute ;
+    top: 0 ;
+    margin-top: 50px ;
+    left: 50% ;
+    transform: translateX(-50%) ;
 }
 #searchBar > input{
     width: 400px;
@@ -139,6 +141,7 @@ html, body{
     font-size: 24px;
     color: #F2F8FF;
     filter: drop-shadow(0px 3.7px 0px rgba(0,0,0,25%));
+    transition: all 0.3s ease;
 }
 #searchBar > button:hover{
     background-color: #0058BF;
@@ -158,6 +161,8 @@ html, body{
     bottom: 0;
     z-index: 0;
     width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 /* ResultScreen End */
 
@@ -174,6 +179,7 @@ html, body{
     color: #003069;
     padding-top: 31px;
     padding-bottom: 31px;
+    display: none;
 }
 
 #nutritionalFacts> h1,h2,h3,p{
