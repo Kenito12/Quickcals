@@ -2,7 +2,7 @@ html, body{
     margin: 0;
     padding: 0;
     background-color: #0075FF;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* Google Font */
@@ -104,6 +104,7 @@ html, body{
     padding: 0;
     display: none;
     position: absolute;
+    z-index: -1;
 }
 
 #HamburgerMenu{
@@ -131,6 +132,10 @@ html, body{
     background-color: #F2F8FF;
     color: #0058BF;
 }
+#searchBar > input:focus{
+    outline: none;
+}
+
 #searchBar > button{
     margin-left: 16px;
     width: 127px;
@@ -157,9 +162,9 @@ html, body{
 }
 
 #wave{
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    z-index: 0;
+    z-index: -1;
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -170,7 +175,7 @@ html, body{
 /* NutritionalFacts */
 #nutritionalFacts{
     width: 398px;
-    height: 551px;
+    height: 500px;
     background-color: #F2F8FF;
     border-radius: 34px;
     border: none;
@@ -275,3 +280,10 @@ html, body{
 }
 /* MetersBars End*/
 
+/* Overlay Menu */
+#overlay{
+    width: 654px;
+    height: 364px;
+    background-color: #F2F8FF;
+}
+/* Overlay Menu End*/

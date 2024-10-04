@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Startscreen -->
     <div id="startScreen">
         <div id="titleContainer">
             <h1 class="matemasie-regular stagOutro" id="title">QUICKCALS</h1>
@@ -17,7 +18,23 @@
             <div id="startBut" class="baloo-da-2-SemiB stagOutro">Start</div>
         </div>
     </div>
+
+    <!-- ResultScreen -->
     <div id="ResultScreen">
+            <!-- Overlay Menu -->
+    <nav id="overlay">
+        <img src="Assets/ExitIcon.svg" alt="close-btn" id="close-menu">
+        <ul>
+            <li>
+                <label for="CalGoal" class="">Daily Calories Goal
+                    <input type="text" value="2500" id="CalGoalInput">
+                </label>
+            </li>
+            <li>
+                <label for="ProtGoal" class="">Daily Protein Goal
+                    <input type="text" value="100" id="ProtGoalInput">
+                </label>
+            </li>
         <header id="taskbar">
             <h2 id="resultTitle" class="matemasie-regular">QUICKCALS</h2>
             <form id="searchBar">
@@ -26,6 +43,7 @@
             </form>
             <img src="Assets/HamburgerMenu.svg" alt="HamburgerMenu" id="HamburgerMenu">
         </header>
+        
         <div id="nutritionalFacts">
             <!-- TEMPLATE -->
             <!-- <h1 class="roboto-bold">Nutritional Facts</h1>
