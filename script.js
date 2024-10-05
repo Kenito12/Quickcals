@@ -10,14 +10,72 @@ const searchInput = document.getElementById("SearchInput")
 const nutritionalFacts = document.getElementById("nutritionalFacts")
 const metersParent = document.getElementById("metersParent")
 const hamBut = document.getElementById("HamburgerMenu")
+const overlay = document.getElementById("overlay")
+const closeMenu = document.getElementById("close-menu")
+const calGoalInput = document.getElementById("CalGoalInput")
+const protGoalInput = document.getElementById("ProtGoalInput")
 
 metersParent.style.display = "none"
-
 // These variablees use to calculate a personalized amount of calories and protein
 var ingrCals
 var ingrProt
-var calsGoal = 2500;
-var proteinGoal = 150;
+var calsGoal = calGoalInput.value
+var proteinGoal = protGoalInput.value
+
+// Hamburger menu features 
+hamBut.onclick = () => {
+    overlay.style.display = "block"
+    gsap.fromTo('#overlay',{
+        xPercent: 100, duration: 0.6, opacity: 0
+    },{
+        xPercent: 0, duration: 0.6, opacity: 1
+    })
+    gsap.from('#close-menu',{
+        rotation: 720,
+        duration: 1
+    })
+}
+// Using GSAP for mouseover and mouseout on Hamburger menu
+hamBut.onmouseover = () => {
+    gsap.to(hamBut,{
+        y: 10, duration: 0.6
+    })
+}
+hamBut.onmouseout = () => {
+    gsap.to(hamBut,{
+        y: 0, duration: 0.6
+    })
+}
+
+// Using GSAP for close 
+closeMenu.onclick = () => {
+    // overlay.style.display = "none"
+    gsap.fromTo('#overlay',{
+        xPercent: 0, duration: 0.6, opacity: 1
+    },{
+        xPercent: 100, duration: 0.6, opacity: 0
+    })
+}
+closeMenu.onmouseover = () => {
+    gsap.to(closeMenu,{
+        rotation: 180, duration: 0.6
+    })
+}
+closeMenu.onmouseout = () => {
+    gsap.to(closeMenu,{
+        rotation: -180, duration: 0.6
+    })
+}
+
+calGoalInput.onchange = () => {
+    calsGoal = calGoalInput.value
+    console.log('value change cal to' + calsGoal)
+}
+protGoalInput.onchange = () => {
+    proteinGoal = protGoalInput.value
+    console.log('value change protein to' + proteinGoal)
+}
+
 
 
 // Start button behaviors   activate some animation and loading result page
