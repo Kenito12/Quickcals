@@ -14,8 +14,8 @@ const overlay = document.getElementById("overlay")
 const closeMenu = document.getElementById("close-menu")
 const calGoalInput = document.getElementById("CalGoalInput")
 const protGoalInput = document.getElementById("ProtGoalInput")
-
 metersParent.style.display = "none"
+
 // These variablees use to calculate a personalized amount of calories and protein
 var ingrCals
 var ingrProt
@@ -67,6 +67,8 @@ closeMenu.onmouseout = () => {
     })
 }
 
+
+// if there is a change on calgoal and proteingoal input both value will get update
 calGoalInput.onchange = () => {
     calsGoal = calGoalInput.value
     console.log('value change cal to' + calsGoal)
@@ -98,6 +100,7 @@ searchBut.onclick = (event) => {
     const output = searchInput.value.replace(/ /g, "%20");
     console.log(output)
 
+    // display the page and play gsap animation
     nutritionalFacts.style.display = 'block'
     gsap.from(nutritionalFacts, {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
     gsap.from("#calMeter, #proteinMeter", {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
@@ -173,15 +176,17 @@ searchBut.onclick = (event) => {
         
         nutritionalFacts.innerHTML += template
 
+        // getting calories from the ingredient and assign to a value
         ingrCals = apiResult.calories
         ingrProt = apiResult.totalNutrients.PROCNT.quantity.toFixed(1)
 
+        // calculate the percentage amount of protein and calories based on daily goal and ingredient
         let calGoalPer = (ingrCals/calsGoal)*100;
         let protGoalPer = (ingrProt/proteinGoal)*100
 
         console.log(calGoalPer)
     
-
+        // activated progress bar for both protein and calories
         bar.animate(calGoalPer/100); 
         bar2.animate(protGoalPer/100); 
         
