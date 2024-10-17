@@ -10,14 +10,74 @@ const searchInput = document.getElementById("SearchInput")
 const nutritionalFacts = document.getElementById("nutritionalFacts")
 const metersParent = document.getElementById("metersParent")
 const hamBut = document.getElementById("HamburgerMenu")
-
+const overlay = document.getElementById("overlay")
+const closeMenu = document.getElementById("close-menu")
+const calGoalInput = document.getElementById("CalGoalInput")
+const protGoalInput = document.getElementById("ProtGoalInput")
 metersParent.style.display = "none"
 
 // These variablees use to calculate a personalized amount of calories and protein
 var ingrCals
 var ingrProt
-var calsGoal = 2500;
-var proteinGoal = 150;
+var calsGoal = calGoalInput.value
+var proteinGoal = protGoalInput.value
+
+// Hamburger menu features 
+hamBut.onclick = () => {
+    overlay.style.display = "block"
+    gsap.fromTo('#overlay',{
+        xPercent: 100, duration: 0.6, opacity: 0
+    },{
+        xPercent: 0, duration: 0.6, opacity: 1
+    })
+    gsap.from('#close-menu',{
+        rotation: 720,
+        duration: 1
+    })
+}
+// Using GSAP for mouseover and mouseout on Hamburger menu
+hamBut.onmouseover = () => {
+    gsap.to(hamBut,{
+        y: 10, duration: 0.6
+    })
+}
+hamBut.onmouseout = () => {
+    gsap.to(hamBut,{
+        y: 0, duration: 0.6
+    })
+}
+
+// Using GSAP for close 
+closeMenu.onclick = () => {
+    // overlay.style.display = "none"
+    gsap.fromTo('#overlay',{
+        xPercent: 0, duration: 0.6, opacity: 1
+    },{
+        xPercent: 100, duration: 0.6, opacity: 0
+    })
+}
+closeMenu.onmouseover = () => {
+    gsap.to(closeMenu,{
+        rotation: 180, duration: 0.6
+    })
+}
+closeMenu.onmouseout = () => {
+    gsap.to(closeMenu,{
+        rotation: -180, duration: 0.6
+    })
+}
+
+
+// if there is a change on calgoal and proteingoal input both value will get update
+calGoalInput.onchange = () => {
+    calsGoal = calGoalInput.value
+    console.log('value change cal to' + calsGoal)
+}
+protGoalInput.onchange = () => {
+    proteinGoal = protGoalInput.value
+    console.log('value change protein to' + proteinGoal)
+}
+
 
 
 // Start button behaviors   activate some animation and loading result page
@@ -40,6 +100,7 @@ searchBut.onclick = (event) => {
     const output = searchInput.value.replace(/ /g, "%20");
     console.log(output)
 
+    // display the page and play gsap animation
     nutritionalFacts.style.display = 'block'
     gsap.from(nutritionalFacts, {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
     gsap.from("#calMeter, #proteinMeter", {opacity: 1, duration: 1, y: -50, ease: "bounce.out"})
@@ -115,15 +176,17 @@ searchBut.onclick = (event) => {
         
         nutritionalFacts.innerHTML += template
 
+        // getting calories from the ingredient and assign to a value
         ingrCals = apiResult.calories
         ingrProt = apiResult.totalNutrients.PROCNT.quantity.toFixed(1)
 
+        // calculate the percentage amount of protein and calories based on daily goal and ingredient
         let calGoalPer = (ingrCals/calsGoal)*100;
         let protGoalPer = (ingrProt/proteinGoal)*100
 
         console.log(calGoalPer)
     
-
+        // activated progress bar for both protein and calories
         bar.animate(calGoalPer/100); 
         bar2.animate(protGoalPer/100); 
         
